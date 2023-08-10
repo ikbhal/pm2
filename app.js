@@ -38,8 +38,12 @@ app.post('/pm2-command', (req, res) => {
       pm2Command = 'pm2 list';
       break;
     case 'start':
-      pm2Command = `pm2 start ${scriptPath} --name=${appName} ${additionalCommand}`;
-      break;
+        if (scriptPath) {
+          pm2Command = `pm2 start ${scriptPath} --name=${appName} ${additionalCommand}`;
+        } else {
+          pm2Command = `pm2 start ${appName} ${additionalCommand}`;
+        }
+        break;
     case 'logs':
       pm2Command = `pm2 logs ${appName}`;
       break;
