@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PM2 Command Runner</title>
+</head>
+<body>
+  <h1>PM2 Command Runner</h1>
+  
+  <% if (message) { %>
+    <div><%= message %></div>
+  <% } %>
+  
+  <form method="post" action="<%= `http://localhost:${port}/pm2-command` %>">
+    <label>
+      App Name (for start/stop/logs):
+      <input type="text" name="appName">
+    </label>
+    <br>
+    <label>
+      Preselect Command:
+      <select name="preselect">
+        <option value="list">pm2 list</option>
+        <option value="start">pm2 start</option>
+        <option value="logs">pm2 logs</option>
+        <option value="stop">pm2 stop</option>
+      </select>
+    </label>
+    <br>
+    <label>
+      Additional Command (for start):
+      <input type="text" name="additionalCommand">
+    </label>
+    <br>
+    <label>
+      Script Path (for start):
+      <input type="text" name="scriptPath">
+    </label>
+    <br>
+    <button type="submit">Run Command</button>
+  </form>
+  
+  <% if (output) { %>
+    <h2>Command Output:</h2>
+    <pre><%= output %></pre>
+  <% } %>
+</body>
+</html>
