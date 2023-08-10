@@ -10,7 +10,7 @@
     <div><%= message %></div>
   <% } %>
   
-  <form method="post" action="<%= `http://localhost:${port}/pm2-command` %>">
+  <form method="post" action="/pm2-command">
     <label>
       App Name (for start/stop/logs):
       <input type="text" name="appName">
